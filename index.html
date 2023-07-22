@@ -1,0 +1,93 @@
+<<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Quiz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <button class= "high-scores-button">View High Scores</button>
+     </header>
+
+    <main>
+      <section>
+        <div class= "large-font">Coding Quiz Challenge</div>
+        <br></br>
+        <div class = "med-font">
+            <p>Try to answer the following questions within the time limit.</p>
+            <p>Keep in mind that incorrect answers will penalize your score/time by 15 seconds</p>
+        </div>
+        <button class="start-button">Start</button>
+      </section>
+      <section>
+        <div class="card word-guess">
+          <!--<div class="large-font word-blanks">J _ v _ S c r_ _t</div> -->
+          <p id = "question-text">Here is your first question:</p>
+          <button id="answerBtn1"></button>
+          <button id="answerBtn2"></button>
+          <button id="answerBtn3"></button>
+          <button id="answerBtn4"></button>
+        </div>
+      </section>
+
+              <!-- A modal dialog containing a form -->
+              <div>
+                <!-- <button id="openDialogBtn">Open Password Criteria</button> -->
+              
+                <dialog id="passwordCriteriaDialog">
+                  <form id="generateForm">
+                    <p id = "question-text">Here is your first question:</p>
+                    <br> </br>
+                    <div class = "checkbox">
+                      <label for="passwordCriteria">Select one of the following for you answer:</label>
+                      <br></br>
+                      <label>
+                        <input type="checkbox" name="criteria" value="uppercase">
+                        Uppercase letters
+                      </label><br>
+                      <label>
+                        <input type="checkbox" name="criteria" value="lowercase">
+                        Lowercase letters
+                      </label><br>
+                      <label>
+                        <input type="checkbox" name="criteria" value="numbers">
+                        Numbers
+                      </label><br>
+                      <label>
+                        <input type="checkbox" name="criteria" value="special">
+                        Special characters
+                      </label><br>
+                      </div>
+                      <br></br>
+                      <button type="button" id="applyCriteriaBtn">Apply</button>
+                      <button type="button" id="closeDialogBtn">Close</button>
+                  </form>
+                </dialog>
+               </div>
+
+
+               
+
+      <section>
+        <div class="card results">
+          <div class = "win-loss-container">
+          <div>
+          <h2>Wins: <span class="win">0 </span> </h2>
+          <h2>Losses: <span class="lose">0</span></h2>
+        </div>
+          <button class="reset-button">Reset Score</button>
+        </div>
+          <div class= "card timer">
+            <div class = "timer-text">
+              <div class="large-font timer-count">10</div>
+              <h3>seconds remaining</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
