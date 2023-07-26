@@ -5,10 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+
+    <style>
+      /* CSS to remove bullet points from <li> elements */
+      li {
+        list-style-type: none;
+      }
+    </style>
   </head>
 
   <body>
     <header>
+
       <div class = "timer-text">
         <div class="med-font timer-count">Quiz Timer: <span id= "timer-span">50</span> seconds remaining!</div> 
       </div>
@@ -48,6 +56,7 @@
         <div>
           <dialog id="resultsDialog">
             <form id="generateForm">
+              <p>Your score was:<span id = "score-span">0</span></p>
                 <label for="userinitials">Enter Users Inintials:</label>
                 <input type="text" id="userinitials" required />
                 <button type="button" id="applyDialogBtn">Apply</button>
@@ -56,12 +65,28 @@
           </dialog>
         </div>
                
+            
+        <!-- A modal dialog containing a form -->
+        <div>
+          <dialog id="highScoresDialog">
+            <form id="highScoresForm">
+              <p class = "med-font">High Scores</p>
+              <div class="med-font"> 
+                <ul id="scores-list"></ul>
+              </div>
+                <button type="button" id="closehighScoresDialogBtn">Close</button>
+                <button type = "button" class="reset-button">Reset Scores</button>
+            </form>
+          </dialog>
+        </div>
 
       <section>
-       <button class="reset-button">Reset Scores</button>
-       <div class="med-font"> 
-         <ul id="results-List"></ul>
-       </div>
+        <!-- <p class = "med-font">Previous Scores</p> -->
+        <div class="med-font"> 
+         <ul id="results-list"></ul>
+        </div>
+        <button class="view-button">View/Reset Scores</button>
+        <!-- <button class="reset-button">Reset Scores</button> -->
       </section>
 
 

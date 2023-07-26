@@ -29,12 +29,6 @@ min-height: 50px;
   margin-top: 20px;
 }
 
-.win-loss-container {
-  /*display: flex;
-  justify-content: space-between;
-  margin-top: 16px; */
-}
-
 button {
   background: radial-gradient(circle, rgb(140, 188, 240) 0%, rgba(33, 138, 187, 0.954) 100%);
   border-radius: 8px;
@@ -56,8 +50,9 @@ min-height: 50px;
 
 header {
   display: flex;
+  flex-direction: row-reverse; 
   padding: 5px;
-  text-align: left;
+  text-align: right;
   background: white;
   color: black
   border-bottom:30px #879274;
@@ -121,6 +116,11 @@ section {
 
 .timer-text {
   padding: 5px;
+
+}
+.timer-count {
+  padding: 5px;
+  float: right;
 }
 
 @media screen and (max-width: 1183px) {

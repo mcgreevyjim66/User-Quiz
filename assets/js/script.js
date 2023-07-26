@@ -3,6 +3,7 @@ var timerElement = document.querySelector("#timer-span");
 var resultBarElement = document.querySelector("#result-bar");
 var startButton = document.querySelector(".start-button");
 var resetButton = document.querySelector(".reset-button");
+var viewButton = document.querySelector(".view-button");
 
 var questiontext = document.querySelector("#question-text");
 var answer1BtnObj = document.querySelector("#answerBtn1");
@@ -13,17 +14,22 @@ var answer4BtnObj = document.querySelector("#answerBtn4");
 var resultsForm = document.querySelector("#results-form");
 var resultsList = document.querySelector("#results-list");
 var resultsCountSpan = document.querySelector("#results-count");
+var ScoreSpan = document.querySelector("#score-span");
+
+var scoresList = document.querySelector("#scores-list");
 
 
 
   // Get the dialog element
   const resultsDialog = document.getElementById("resultsDialog");
+  const highScoresDialog = document.getElementById("highScoresDialog");
 
   // Get the open dialog button
   const openDialogBtn = document.getElementById("openDialogBtn");
   
   // Get the close dialog button
   const closeDialogBtn = document.getElementById("closeDialogBtn");
+  const closeHighScoresDialogBtn = document.getElementById("closehighScoresDialogBtn");
   
   // Get the apply criteria button
   const applyDialogBtn = document.getElementById("applyDialogBtn");
@@ -44,52 +50,107 @@ var userinitials = ""
 
 // define quiz object
 const quizQuestion1obj = {
-  question: "Who was first president of United States?",
-  answer1: "George Washington",
-  answer2: "Benjamin Franklin",
-  answer3: "Thomas Jefferson",
-  answer4: "John Adams",
-  correctAnswer: "George Washington",
+  question: "What is the correct way to declare a variable in JavaScript?",
+  answer1: "variable x;",
+  answer2: "let x;",
+  answer3: "const x;",
+  answer4: "int x;",
+  correctAnswer: "let x;",
   gotCorrect: false,
 };
+
 const quizQuestion2obj = {
-  question: "What is the average land speed of a Cheeta?",
-  answer1: "50 mph",
-  answer2: "60 mph",
-  answer3: "65 mph",
-  answer4: "70 mph",
-  correctAnswer: "65 mph",
+  question: "Which method is used to add an element to the end of an array?",
+  answer1: "push()",
+  answer2: "unshift()",
+  answer3: "pop()",
+  answer4: "shift()",
+  correctAnswer: "push()",
   gotCorrect: false,
 };
+
 const quizQuestion3obj = {
-  question: "How many planets are there in the solar system?",
-  answer1: "7",
-  answer2: "8",
-  answer3: "9",
-  answer4: "10",
-  correctAnswer: "8",
+  question: "What symbol is used for single-line comments in JavaScript?",
+  answer1: "//",
+  answer2: "/*",
+  answer3: "<!--",
+  answer4: "##",
+  correctAnswer: "//",
   gotCorrect: false,
 };
+
 const quizQuestion4obj = {
-  question: "What is the largest mammal on Earth?",
-  answer1: "Hippo",
-  answer2: "Elephant",
-  answer3: "Giraffe",
-  answer4: "Blue Whale",
-  correctAnswer: "Blue Whale",
+  question: "Which operator is used for strict equality comparison in JavaScript?",
+  answer1: "==",
+  answer2: "===",
+  answer3: "!=",
+  answer4: "!==",
+  correctAnswer: "===",
   gotCorrect: false,
 };
+
 const quizQuestion5obj = {
-  question: "What is the acceleration of gravity?",
-  answer1: "10 m/s",
-  answer2: "7 ms",
-  answer3: "9.8 m/s",
-  answer4: "5 m/s",
-  correctAnswer: "9.8 m/s",
+  question: "What does the 'typeof' operator return in JavaScript?",
+  answer1: "The data type of a variable",
+  answer2: "The value of a variable",
+  answer3: "The length of a string",
+  answer4: "The index of an element in an array",
+  correctAnswer: "The data type of a variable",
   gotCorrect: false,
 };
+
+const quizQuestion6obj = {
+  question: "Which loop is used to iterate over the properties of an object?",
+  answer1: "for loop",
+  answer2: "while loop",
+  answer3: "do-while loop",
+  answer4: "for...in loop",
+  correctAnswer: "for...in loop",
+  gotCorrect: false,
+};
+
+const quizQuestion7obj = {
+  question: "What is the purpose of the 'addEventListener' method in JavaScript?",
+  answer1: "To modify the CSS styles of an element",
+  answer2: "To add a new HTML element to the page",
+  answer3: "To handle events like clicks and keypresses",
+  answer4: "To perform mathematical operations",
+  correctAnswer: "To handle events like clicks and keypresses",
+  gotCorrect: false,
+};
+
+const quizQuestion8obj = {
+  question: "What does the 'return' statement do in a function?",
+  answer1: "It terminates the function and returns a value",
+  answer2: "It defines a new variable",
+  answer3: "It creates a loop",
+  answer4: "It adds a comment to the code",
+  correctAnswer: "It terminates the function and returns a value",
+  gotCorrect: false,
+};
+
+const quizQuestion9obj = {
+  question: "What method is used to remove the last element from an array?",
+  answer1: "pop()",
+  answer2: "shift()",
+  answer3: "splice()",
+  answer4: "push()",
+  correctAnswer: "pop()",
+  gotCorrect: false,
+};
+
+const quizQuestion10obj = {
+  question: "Which keyword is used to declare a block-scoped variable in JavaScript?",
+  answer1: "var",
+  answer2: "let",
+  answer3: "const",
+  answer4: "block",
+  correctAnswer: "let",
+  gotCorrect: false,
+};
+
 // array of question objects
-var ArrayofQuestions = [quizQuestion1obj, quizQuestion2obj, quizQuestion3obj, quizQuestion4obj, quizQuestion5obj];
+var ArrayofQuestions = [quizQuestion1obj, quizQuestion2obj, quizQuestion3obj, quizQuestion4obj, quizQuestion5obj, quizQuestion6obj, quizQuestion7obj, quizQuestion8obj, quizQuestion9obj, quizQuestion10obj];
 var numQuestions = ArrayofQuestions.length;
 
 //declare score object $ array
@@ -112,7 +173,7 @@ function init() {
   } else {
     ArrayofScores =[];
   }
-  renderScores();
+  renderScores2();
 
   startButton.disabled = false;
   startButton.style.display = "inline";
@@ -123,10 +184,6 @@ function init() {
 
   timerElement.textContent = timerCount;
   questiontext.textContent = "Press Start button to begin new quiz."
-  //answer1BtnObj.textContent = "";
-  //answer2BtnObj.textContent = "Answer # 2";
-  //answer3BtnObj.textContent = "Answer # 3";
-  //answer4BtnObj.textContent = "Answer # 4";
  
   answer1BtnObj.style.display = "none";
   answer2BtnObj.style.display = "none";
@@ -199,6 +256,10 @@ function init() {
     startButton.disabled = false;
     resetButton.disabled = false;
     isDone = true;
+ 
+  }
+  function viewQuiz(){
+  highScoresopenDialog();
  
   }
   //calculate score of last quiz
@@ -330,15 +391,25 @@ function answer2Clicked(){
 
         // Function to open the dialog
         function openDialog() {
+          ScoreSpan.textContent = totalscore;
           resultsDialog.showModal();
         }
-
+        function highScoresopenDialog() {
+            highScoresDialog.showModal();
+        }
 
         // Function to close the dialog
         function closeDialog() {
           
           myForm.reset();
           resultsDialog.close();
+          init();
+        
+        }
+        function highScorescloseDialog() {
+          
+          highScoresForm.reset();
+          highScoresDialog.close();
           init();
         
         }
@@ -360,7 +431,8 @@ function answer2Clicked(){
         
                 // Close the dialog
           closeDialog();
-          renderScores();
+          renderScores2();
+          highScoresopenDialog();
         }
          
         
@@ -385,6 +457,23 @@ function renderScores() {
 
 
     resultsList.appendChild(li);
+  }
+}
+function renderScores2() {
+  // Clear past scores results lsit
+  scoresList.innerHTML = "";
+  
+  // Render a new li for each score
+  for (var i = 0; i < ArrayofScores.length; i++) {
+    var initresult = ArrayofScores[i].initials;
+    var quizresult = ArrayofScores[i].quizscore;
+
+    var li = document.createElement("li");
+    li.textContent = "User: " + initresult + " Scored: " + quizresult;
+    li.setAttribute("data-index", i);
+
+
+    scoresList.appendChild(li);
   }
 }
 
@@ -422,10 +511,11 @@ function startTimer() {
 // Attach event listener to start button to call startGame function on click
 startButton.addEventListener("click", startQuiz);
 
+viewButton.addEventListener("click", viewQuiz);
 resetButton.addEventListener("click", resetQuiz);
-
 // Event listeners
 closeDialogBtn.addEventListener("click", closeDialog);
+closeHighScoresDialogBtn.addEventListener("click", highScorescloseDialog);
 applyDialogBtn.addEventListener("click", applyDialog);
 
 // Calls init() so that it fires when page opened
