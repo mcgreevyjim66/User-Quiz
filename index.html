@@ -1,92 +1,70 @@
-<<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
     <title>User Quiz</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
+
   <body>
     <header>
-      <button class= "high-scores-button">View High Scores</button>
-     </header>
+      <div class = "timer-text">
+        <div class="med-font timer-count">Quiz Timer: <span id= "timer-span">50</span> seconds remaining!</div> 
+      </div>
+    </header>
 
     <main>
       <section>
         <div class= "large-font">Coding Quiz Challenge</div>
-        <br></br>
+    
         <div class = "med-font">
             <p>Try to answer the following questions within the time limit.</p>
             <p>Keep in mind that incorrect answers will penalize your score/time by 15 seconds</p>
         </div>
-        <button class="start-button">Start</button>
+       <!-- <button class="start-button">Start</button> -->
       </section>
+
+
       <section>
-        <div class="card word-guess">
-          <!--<div class="large-font word-blanks">J _ v _ S c r_ _t</div> -->
-          <p id = "question-text">Here is your first question:</p>
-          <button id="answerBtn1"></button>
-          <button id="answerBtn2"></button>
-          <button id="answerBtn3"></button>
-          <button id="answerBtn4"></button>
+        <div class="card word-guess med-font">
+          <p id = "question-text">Press Start button to begin new quiz.</p>
+          <button class="start-button">Start</button>
+          <button class = "abutton" id="answerBtn1"></button>
+          <button class = "abutton" id="answerBtn2">Answer # 2</button>
+          <button class = "abutton" id="answerBtn3">Answer # 3</button>
+          <button class = "abutton" id="answerBtn4">Answer # 4</button>
+          <br>
+          <p id="result-bar"></p>
         </div>
       </section>
-
-              <!-- A modal dialog containing a form -->
-              <div>
-                <!-- <button id="openDialogBtn">Open Password Criteria</button> -->
-              
-                <dialog id="passwordCriteriaDialog">
-                  <form id="generateForm">
-                    <p id = "question-text">Here is your first question:</p>
-                    <br> </br>
-                    <div class = "checkbox">
-                      <label for="passwordCriteria">Select one of the following for you answer:</label>
-                      <br></br>
-                      <label>
-                        <input type="checkbox" name="criteria" value="uppercase">
-                        Uppercase letters
-                      </label><br>
-                      <label>
-                        <input type="checkbox" name="criteria" value="lowercase">
-                        Lowercase letters
-                      </label><br>
-                      <label>
-                        <input type="checkbox" name="criteria" value="numbers">
-                        Numbers
-                      </label><br>
-                      <label>
-                        <input type="checkbox" name="criteria" value="special">
-                        Special characters
-                      </label><br>
-                      </div>
-                      <br></br>
-                      <button type="button" id="applyCriteriaBtn">Apply</button>
-                      <button type="button" id="closeDialogBtn">Close</button>
-                  </form>
-                </dialog>
-               </div>
+     
+     
+      
 
 
+      
+        <!-- A modal dialog containing a form -->
+        <div>
+          <dialog id="resultsDialog">
+            <form id="generateForm">
+                <label for="userinitials">Enter Users Inintials:</label>
+                <input type="text" id="userinitials" required />
+                <button type="button" id="applyDialogBtn">Apply</button>
+                <button type="button" id="closeDialogBtn">Close</button>
+            </form>
+          </dialog>
+        </div>
                
 
       <section>
-        <div class="card results">
-          <div class = "win-loss-container">
-          <div>
-          <h2>Wins: <span class="win">0 </span> </h2>
-          <h2>Losses: <span class="lose">0</span></h2>
-        </div>
-          <button class="reset-button">Reset Score</button>
-        </div>
-          <div class= "card timer">
-            <div class = "timer-text">
-              <div class="large-font timer-count">10</div>
-              <h3>seconds remaining</h3>
-            </div>
-          </div>
-        </div>
+       <button class="reset-button">Reset Scores</button>
+       <div class="med-font"> 
+         <ul id="results-List"></ul>
+       </div>
       </section>
+
+
     </main>
     <script src="assets/js/script.js"></script>
   </body>
