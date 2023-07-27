@@ -479,7 +479,7 @@ function renderScores2() {
 
 
 
-// end code scors processing
+// end code scores processing
 
 
 
