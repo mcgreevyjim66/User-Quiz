@@ -15,7 +15,7 @@ To use the User Quiz website, please vist <https://mcgreevyjim66.github.io/User-
 ## Source
 
 My repo, is located at <https://github.com/mcgreevyjim66/User-Quiz>.
-There is source code located in the Generate-Password folder, as well as in the ./assets/images, ./assets/css and ./assets/scripts folders.
+There is source code located in the User-Quiz folder, as well as in the ./assets/images, ./assets/css and ./assets/scripts folders.
 
 ## Mock-up
 
