@@ -178,6 +178,7 @@ function init() {
   startButton.disabled = false;
   startButton.style.display = "inline";
   resetButton.disabled = false;
+  viewButton.disabled = false;
   isDone = true;
   currentquestionnumber = 0;
   timerCount = 50;
@@ -210,6 +211,8 @@ function init() {
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
     resetButton.disabled = true;
+    viewButton.disabled = true;
+    viewButton.style.display = "none"
     startButton.style.display = "none";
     answer1BtnObj.style.display = "inline"; 
     answer2BtnObj.style.display = "inline"; 
@@ -237,6 +240,8 @@ function init() {
     startButton.disabled = false;
     startButton.style.display = "inline";
     resetButton.disabled = false;
+    viewButton.disabled = false;
+    viewButton.style.display = "inline"
     isDone = true;
 
     questiontext.textContent = "Press Start button to begin new quiz."
@@ -255,6 +260,7 @@ function init() {
     init();
     startButton.disabled = false;
     resetButton.disabled = false;
+    viewButton.disabled = false;
     isDone = true;
  
   }
